@@ -47,73 +47,51 @@ namespace _Code_Figures
       GameObject _go = Instantiate(figureInstantiationTransform, instantiations.transform) as GameObject;
       _go.transform.position = new Vector3(parentTransform.position.x, parentTransform.position.y, parentTransform.position.z);
       Vector3 tempPos = _go.transform.position;
+      Vector3 tempPos_ = tempPos;
 
       for (int i = 0; i < height; i++)
       {
-        _go.transform.position = tempPos;
-        tempPos = new Vector3(_go.transform.position.x, _go.transform.position.y + _figureScale, _go.transform.position.z);
+        tempPos_ = tempPos;
+        tempPos = new Vector3(tempPos_.x, tempPos_.y + _figureScale, tempPos_.z);
 
         for (int j = 0; j < length; j++)
         {
-          _go.transform.position = tempPos;
-          _go.transform.position = new Vector3(_go.transform.position.x, _go.transform.position.y, _go.transform.position.z + (_figureScale * j));
+          tempPos_ = tempPos;
+          tempPos_ = new Vector3(tempPos_.x, tempPos_.y, tempPos_.z + (_figureScale * j));
 
 
           for (int k = 0; k < width; k++)
           {
-            Instantiate(go, _go.transform.position, Quaternion.identity, instantiations.transform);
-            _go.transform.position = new Vector3(_go.transform.position.x + _figureScale, _go.transform.position.y, _go.transform.position.z);
+            Instantiate(go, tempPos_, Quaternion.identity, _go.transform);
+            tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);
           }
         }
       }
     }
-
-    /*   public void CreateFigurePyramid(GameObject go, int pyramidLevels)
-       {
-         GameObject _go = Instantiate(figureInstantiationTransform, instantiations.transform) as GameObject;
-         _go.transform.position = new Vector3(parentTransform.position.x, parentTransform.position.y, parentTransform.position.z);
-         Vector3 tempPos = _go.transform.position;
-         double tempMove;
-
-
-
-         for (int i = pyramidLevels; i > 0; i--)
-         {
-           _go.transform.position = new Vector3(_go.transform.position.x - _figureScale * (1.5f * Convert.ToInt32(Math.Pow(2, (i-1)))), _go.transform.position.y + _figureScale, _go.transform.position.z);
-           for (int j = 0; j < Math.Pow(2, i - 1); j++)
-           {
-             Instantiate(go, _go.transform.position, Quaternion.identity, instantiations.transform);
-             _go.transform.position = new Vector3(_go.transform.position.x + _figureScale, _go.transform.position.y, _go.transform.position.z);
-           }
-         } 
-
-
-
-       } */
 
     public void CreateFigurePyramid(GameObject go, int pyramidLevels)
     {
       GameObject _go = Instantiate(figureInstantiationTransform, instantiations.transform) as GameObject;
       _go.transform.position = new Vector3(parentTransform.position.x, parentTransform.position.y, parentTransform.position.z);
       Vector3 tempPos = _go.transform.position;
-      double tempMove;
+      Vector3 tempPos_ = tempPos;
 
       for (int i = pyramidLevels; i > 0; i--)
       {
-        _go.transform.position = tempPos;
-        tempPos = new Vector3(_go.transform.position.x + _figureScale * 0.5f, _go.transform.position.y + _figureScale, _go.transform.position.z + _figureScale * 0.5f);
+        tempPos_ = tempPos;
+        tempPos = new Vector3(tempPos_.x + _figureScale * 0.5f, tempPos_.y + _figureScale, tempPos_.z + _figureScale * 0.5f);
 
 
         for (int j = i; j > 0; j--)
         {
-          _go.transform.position = tempPos;
-          _go.transform.position = new Vector3(_go.transform.position.x, _go.transform.position.y, _go.transform.position.z + (_figureScale * j));
+          tempPos_ = tempPos;
+          tempPos_ = new Vector3(tempPos_.x, tempPos_.y, tempPos_.z + (_figureScale * j));
 
 
           for (int k = i; k > 0; k--)
           {
-            Instantiate(go, _go.transform.position, Quaternion.identity, instantiations.transform);
-            _go.transform.position = new Vector3(_go.transform.position.x + _figureScale, _go.transform.position.y, _go.transform.position.z);
+            Instantiate(go, tempPos_, Quaternion.identity, _go.transform);
+            tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);
             
           }
         }
