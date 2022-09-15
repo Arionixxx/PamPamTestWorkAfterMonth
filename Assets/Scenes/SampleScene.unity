@@ -1068,6 +1068,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &914534656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 914534657}
+  m_Layer: 0
+  m_Name: Instantiations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &914534657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914534656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.6922383, y: 0.5797321, z: -13.925616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &978962251 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 266939460154420633, guid: 738fe4642e6c2d54cb63f14e56e6d049, type: 3}
@@ -1358,6 +1389,7 @@ MonoBehaviour:
   spherePref: {fileID: 6985860917991569893, guid: c420c9ef0143ffe459165c5d11e18528, type: 3}
   parentTransform: {fileID: 1874873200}
   figureInstantiationTransform: {fileID: 1874873199}
+  instantiations: {fileID: 914534656}
 --- !u!1 &1565877310 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 266939458925975584, guid: 738fe4642e6c2d54cb63f14e56e6d049, type: 3}

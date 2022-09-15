@@ -9,6 +9,7 @@ namespace _Code_Figures
     [SerializeField] GameObject spherePref;
     [SerializeField] Transform parentTransform;
     [SerializeField] private GameObject figureInstantiationTransform;
+    [SerializeField] private GameObject instantiations;
     private GameObject tempMaterial;
     private float _figureScale;
 
@@ -42,7 +43,7 @@ namespace _Code_Figures
 
     public void CreateFigureCube(GameObject go, int length, int width, int height)
     {
-      GameObject _go = Instantiate(figureInstantiationTransform) as GameObject;
+      GameObject _go = Instantiate(figureInstantiationTransform, instantiations.transform) as GameObject;
       _go.transform.position = new Vector3(parentTransform.position.x, parentTransform.position.y, parentTransform.position.z);
       Vector3 tempPos = _go.transform.position;
 
@@ -59,7 +60,7 @@ namespace _Code_Figures
 
           for (int k = 0; k < width; k++)
           {
-            Instantiate(go, _go.transform.position, Quaternion.identity);
+            Instantiate(go, _go.transform.position, Quaternion.identity, instantiations.transform);
             _go.transform.position = new Vector3(_go.transform.position.x + _figureScale, _go.transform.position.y, _go.transform.position.z);
           }
         }
@@ -68,7 +69,7 @@ namespace _Code_Figures
 
     public void CreateFigurePyramid(GameObject go, int pyramidLevels)
     {
-      GameObject _go = Instantiate(figureInstantiationTransform) as GameObject;
+      GameObject _go = Instantiate(figureInstantiationTransform, instantiations.transform) as GameObject;
       _go.transform.position = new Vector3(parentTransform.position.x, parentTransform.position.y, parentTransform.position.z);
       Vector3 tempPos = _go.transform.position;
       double tempMove;
@@ -78,7 +79,7 @@ namespace _Code_Figures
         _go.transform.position = new Vector3(_go.transform.position.x - _figureScale * (1.5f * Convert.ToInt32(Math.Pow(2, (i-1)))), _go.transform.position.y + _figureScale, _go.transform.position.z);
         for (int j = 0; j < Math.Pow(2, i - 1); j++)
         {
-          Instantiate(go, _go.transform.position, Quaternion.identity);
+          Instantiate(go, _go.transform.position, Quaternion.identity, instantiations.transform);
           _go.transform.position = new Vector3(_go.transform.position.x + _figureScale, _go.transform.position.y, _go.transform.position.z);
         }
       }
