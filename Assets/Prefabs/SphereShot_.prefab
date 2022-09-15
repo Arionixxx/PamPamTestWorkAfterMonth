@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 849617ea16b5a374d8f4bcc76e041153, type: 2}
+  _rigidbody: {fileID: 1893679909971371060}
   _radius: 1
   _force: 50
 --- !u!1 &8883778177446497101
@@ -255,5 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 849617ea16b5a374d8f4bcc76e041153, type: 2}
+  _rigidbody: {fileID: 1893679909971371060}
   _radius: 0
   _force: 0

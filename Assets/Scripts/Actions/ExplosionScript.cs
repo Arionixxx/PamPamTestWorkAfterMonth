@@ -7,6 +7,9 @@ namespace Actions
   public class ExplosionScript : MonoBehaviour
   {
     [SerializeField] private FigureSettings settings;
+    [SerializeField] private Rigidbody _rigidbody;
+
+    public Rigidbody Rigidbody => _rigidbody;
 
     public float _radius;
     public float _force;

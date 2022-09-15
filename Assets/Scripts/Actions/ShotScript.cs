@@ -32,7 +32,7 @@ namespace Actions
         bullet = Instantiate(_sphere, shotVector, Quaternion.identity);
       }
 
-      bullet.GetComponent<Rigidbody>().AddForce(transform.forward * _shotForce);
+      bullet.Rigidbody.AddForce(transform.forward * _shotForce);
     }
   }
 }
