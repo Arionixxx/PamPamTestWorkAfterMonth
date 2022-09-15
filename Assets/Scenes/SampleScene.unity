@@ -1118,6 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cube: {fileID: -2727928887074778695, guid: 818992be137dd9646be8fec065cee20a, type: 3}
   _sphere: {fileID: 5605765083607452098, guid: a2abf9facc853354298ae691e76da98b, type: 3}
+  settings: {fileID: 11400000, guid: 849617ea16b5a374d8f4bcc76e041153, type: 2}
   _shotForce: 500
 --- !u!1001 &1005552484
 PrefabInstance:

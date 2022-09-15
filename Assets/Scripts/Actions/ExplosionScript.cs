@@ -46,7 +46,7 @@ namespace Actions
 
     IEnumerator DestroyCoroutine(Collider gameObj)
     {
-      yield return new WaitForSeconds(0.05f);
+      yield return new WaitForSeconds(0.005f);
       Destroy(gameObj.gameObject);
     }
 

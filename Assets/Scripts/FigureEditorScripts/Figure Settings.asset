@@ -16,6 +16,6 @@ MonoBehaviour:
   width: 5
   height: 5
   pyramidLevelsCount: 3
-  bulletSpeed: 50
+  bulletSpeed: 1000
   bulletDamageForce: 300
   bulletExplosionRadius: 1

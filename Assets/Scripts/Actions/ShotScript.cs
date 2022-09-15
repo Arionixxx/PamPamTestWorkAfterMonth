@@ -6,9 +6,9 @@ namespace Actions
 {
   public class ShotScript : MonoBehaviour
   {
-
     [SerializeField] ExplosionScript _cube;
     [SerializeField] ExplosionScript _sphere;
+    [SerializeField] FigureSettings settings;
     [SerializeField] float _shotForce;
 
 
@@ -16,6 +16,7 @@ namespace Actions
 
     public void OnShotButtonDown()
     {
+      _shotForce = settings.bulletSpeed;
 
       Vector3 shotVector = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
