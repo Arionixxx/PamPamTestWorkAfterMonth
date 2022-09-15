@@ -36,7 +36,7 @@ namespace _Code_Figures
     }
     public void CreatePyramid()
     {
-      CreateFigurePyramid(tempMaterial, 4);
+      CreateFigurePyramid(tempMaterial, 5);
     }
 
 
@@ -49,7 +49,7 @@ namespace _Code_Figures
       for (int i = 0; i < height; i++)
       {
         _go.transform.position = tempPos;
-       tempPos = new Vector3(_go.transform.position.x, _go.transform.position.y + _figureScale, _go.transform.position.z);
+        tempPos = new Vector3(_go.transform.position.x, _go.transform.position.y + _figureScale, _go.transform.position.z);
 
         for (int j = 0; j < length; j++)
         {
@@ -75,11 +75,7 @@ namespace _Code_Figures
 
       for (int i = pyramidLevels; i > 0; i--)
       {
-        // _go.transform.position = tempPos; 
-       // tempMove = (Math.Pow(2, i - 1)) / 2;
-        _go.transform.position = new Vector3(_go.transform.position.x - _figureScale * (1.5f * i), _go.transform.position.y, _go.transform.position.z);
-        _go.transform.position = new Vector3(_go.transform.position.x, _go.transform.position.y + _figureScale, _go.transform.position.z);
-
+        _go.transform.position = new Vector3(_go.transform.position.x - _figureScale * (1.5f * Convert.ToInt32(Math.Pow(2, (i-1)))), _go.transform.position.y + _figureScale, _go.transform.position.z);
         for (int j = 0; j < Math.Pow(2, i - 1); j++)
         {
           Instantiate(go, _go.transform.position, Quaternion.identity);
@@ -87,6 +83,8 @@ namespace _Code_Figures
         }
       }
     }
+
+
   }
 }
 
