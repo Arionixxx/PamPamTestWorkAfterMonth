@@ -25,9 +25,9 @@ namespace _Code_Figures
       {
         _figure.CreateCube();
       }
-      if (GUILayout.Button("Sphere as a material"))
+      if (GUILayout.Button("Create pyramid"))
       {
-        _figure.SphereAsAMaterial();
+        _figure.CreatePyramid();
       }
     }
   }
