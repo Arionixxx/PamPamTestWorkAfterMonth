@@ -101,7 +101,7 @@ namespace _Code_Figures
       for (int i = pyramidLevels; i > 0; i--)
       {
         _go.transform.position = tempPos;
-        tempPos = new Vector3(_go.transform.position.x, _go.transform.position.y + _figureScale, _go.transform.position.z);
+        tempPos = new Vector3(_go.transform.position.x + _figureScale * 0.5f, _go.transform.position.y + _figureScale, _go.transform.position.z + _figureScale * 0.5f);
 
 
         for (int j = i; j > 0; j--)
