@@ -6,11 +6,13 @@ namespace Actions
 {
   public class ShotScript : MonoBehaviour
   {
-    [SerializeField] GameObject _cube;
-    [SerializeField] GameObject _sphere;
+
+    [SerializeField] ExplosionScript _cube;
+    [SerializeField] ExplosionScript _sphere;
     [SerializeField] float _shotForce;
 
-    private GameObject bullet; //cube/sphere instantiation script
+
+    private ExplosionScript bullet; //cube/sphere instantiation script
 
     public void OnShotButtonDown()
     {

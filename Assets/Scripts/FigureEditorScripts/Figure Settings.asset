@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2feabc4a545e494a84c32f40069fd8e, type: 3}
   m_Name: Figure Settings
   m_EditorClassIdentifier: 
-  _row: 5
-  _column: 5
+  length: 5
+  width: 5
+  height: 5
+  pyramidLevelsCount: 3
+  bulletSpeed: 50
+  bulletDamageForce: 300
+  bulletExplosionRadius: 1

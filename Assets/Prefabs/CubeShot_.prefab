@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d302788aa65f304792f85858ce8d71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 849617ea16b5a374d8f4bcc76e041153, type: 2}
   _radius: 0
   _force: 0
 --- !u!1 &5241378057031378263
@@ -272,5 +273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d302788aa65f304792f85858ce8d71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 849617ea16b5a374d8f4bcc76e041153, type: 2}
   _radius: 1
-  _force: 50
+  _force: 1000

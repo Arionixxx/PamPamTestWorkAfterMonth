@@ -6,9 +6,16 @@ namespace Actions
 {
   public class ExplosionScript : MonoBehaviour
   {
+    [SerializeField] private FigureSettings settings;
 
     public float _radius;
     public float _force;
+
+    private void Start()
+    {
+      _radius = settings.bulletExplosionRadius;
+      _force = settings.bulletDamageForce;
+    }
 
     public void Explode()
     {
@@ -39,7 +46,7 @@ namespace Actions
 
     IEnumerator DestroyCoroutine(Collider gameObj)
     {
-      yield return new WaitForSeconds(0.1f);
+      yield return new WaitForSeconds(0.05f);
       Destroy(gameObj.gameObject);
     }
 

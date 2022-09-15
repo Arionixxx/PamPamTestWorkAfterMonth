@@ -10,6 +10,7 @@ namespace _Code_Figures
     [SerializeField] Transform parentTransform;
     [SerializeField] private GameObject figureInstantiationTransform;
     [SerializeField] private GameObject instantiations;
+    [SerializeField] private FigureSettings settings;
     private GameObject tempMaterial;
     private float _figureScale;
 
@@ -33,11 +34,11 @@ namespace _Code_Figures
     public void CreateCube()
     {
       //add script for parent transform moving if another object are nearby
-      CreateFigureCube(tempMaterial, 5, 5, 5);
+      CreateFigureCube(tempMaterial, settings.length, settings.width, settings.height);
     }
     public void CreatePyramid()
     {
-      CreateFigurePyramid(tempMaterial, 5);
+      CreateFigurePyramid(tempMaterial, settings.pyramidLevelsCount);
     }
 
 
