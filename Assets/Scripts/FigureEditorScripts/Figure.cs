@@ -18,7 +18,6 @@ namespace _Code_Figures
     private GameObject tempMaterial;
     private float _figureScale = 5;
     private bool _isAnotherFigure = false;
-    private float _tempDistance = 5;
 
     static public UnityAction FigureDestroyingAction;
 
@@ -34,7 +33,6 @@ namespace _Code_Figures
     private void Awake()
     {
       tempMaterial = cubePref;
-      _tempDistance = _distance;
       GenerateFigures();
     }
 
@@ -139,9 +137,11 @@ namespace _Code_Figures
       Collider[] hitColliders = Physics.OverlapSphere(instantiatorPos, checkingRadius);
       foreach (var hitCollider in hitColliders)
       {
-        if (hitCollider.CompareTag("DestroyedFigure") && !hitCollider.gameObject.GetComponent<Rigidbody>().isKinematic){//change it 
-          _isAnotherFigure = true;
-          
+         if (hitCollider.CompareTag("DestroyedFigure") && hitCollider.gameObject.GetComponent<Rigidbody>().isKinematic){//change it 
+       // if (hitCollider.CompareTag("DestroyedFigure")){ 
+       //if (!hitCollider.gameObject.GetComponent<Rigidbody>().isKinematic) { 
+           _isAnotherFigure = true;
+          return;
         }
         else
         {
@@ -182,8 +182,7 @@ namespace _Code_Figures
         CreatePyramid();
       }
 
-
-
+      _isAnotherFigure = false;
     }
   }
 }
