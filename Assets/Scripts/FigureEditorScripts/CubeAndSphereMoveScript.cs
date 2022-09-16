@@ -8,7 +8,6 @@ namespace _Code_Figures
 {
   public class CubeAndSphereMoveScript : MonoBehaviour
   { 
-    private ExplosionScript _explosionScript;
     private Rigidbody _rb;
 
     private void OnEnable()
@@ -18,7 +17,6 @@ namespace _Code_Figures
     private void Start()
     {
       _rb = gameObject.GetComponent<Rigidbody>();
-      _explosionScript = this.GetComponent<ExplosionScript>();
     }
 
     IEnumerator bulletDestroyCoroutine()

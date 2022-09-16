@@ -18,6 +18,7 @@ namespace Actions
     {
       _radius = settings.bulletExplosionRadius;
       _force = settings.bulletDamageForce;
+      _rigidbody = GetComponent<Rigidbody>();
     }
 
     public void Explode()
@@ -50,6 +51,7 @@ namespace Actions
     IEnumerator DestroyCoroutine(Collider gameObj)
     {
       yield return new WaitForSeconds(0.005f);
+      _rigidbody.isKinematic = true;
       gameObj.gameObject.SetActive(false);
     }
 
