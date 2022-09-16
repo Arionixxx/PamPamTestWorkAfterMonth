@@ -12,23 +12,27 @@ namespace Actions
     [SerializeField] FigureSettings settings;
     [SerializeField] float _shotForce;
 
+    List<ExplosionScript> poolBullets;
+
 
     private ExplosionScript bullet; //cube/sphere instantiation script
   
     private void Awake()
     {
-      List<ExplosionScript> poolBullets = new List<ExplosionScript>();
+      poolBullets = new List<ExplosionScript>();
       for (int i = 0; i  < 10; i++)
       {
         ExplosionScript cube = new ExplosionScript();
-        cube = _cube;
+        //  cube = _cube;
+        cube = Instantiate(_cube);
         cube.gameObject.SetActive(false);
         poolBullets.Add(cube);
       }
       for (int i = 0; i < 10; i++)
       {
         ExplosionScript sphere = new ExplosionScript();
-        sphere = _sphere;
+       // sphere = _sphere;
+        sphere = Instantiate(_sphere);
         sphere.gameObject.SetActive(false);
         poolBullets.Add(sphere);
       }
@@ -59,7 +63,7 @@ namespace Actions
 
       float randNum = Random.Range(1, 3);
 
-      if (randNum == 1)
+   /*   if (randNum == 1)
       {
         bullet = Instantiate(_cube, shotVector, Quaternion.identity);
       }
@@ -67,10 +71,17 @@ namespace Actions
 
       {
         bullet = Instantiate(_sphere, shotVector, Quaternion.identity);
-      }
+      } */
+
+      bullet = poolBullets[poolBullets.Count - 1];
+      poolBullets.RemoveAt(poolBullets.Count-1);
+      bullet.gameObject.SetActive(true);
+      bullet.transform.position = shotVector;
+
 
       bullet.Rigidbody.AddForce(transform.forward * _shotForce);
       StartCoroutine(InstantiationCorutine());
+      Debug.Log(bullet);
     }
 
     IEnumerator InstantiationCorutine()
