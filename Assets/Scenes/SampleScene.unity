@@ -1292,8 +1292,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1565877314}
-        m_TargetAssemblyTypeName: InstantiatingFiguresScript, Assembly-CSharp
+      - m_Target: {fileID: 1353720061}
+        m_TargetAssemblyTypeName: _Code_Figures.Figure, Assembly-CSharp
         m_MethodName: GenerateFigures
         m_Mode: 1
         m_Arguments:
@@ -1394,29 +1394,6 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: 849617ea16b5a374d8f4bcc76e041153, type: 2}
   _distance: 8
   playerTransform: {fileID: 1112198331}
---- !u!1 &1565877310 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 266939458925975584, guid: 738fe4642e6c2d54cb63f14e56e6d049, type: 3}
-  m_PrefabInstance: {fileID: 1005552484}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1565877314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565877310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20bc340a256ce8240959b85944ab74c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _distance: 5
-  _coubeFromCubesFigure: {fileID: 3523262562944701454, guid: 45afb953892bcb046988149efa9ae8ba, type: 3}
-  _pyramidFromCubesFigure: {fileID: 3378497221241297723, guid: 3a6de6268e2be204a8cfee8bba335965, type: 3}
-  _coubeFromSpheresFigure: {fileID: 6711440305478467888, guid: 3589764149f8cbf46b303055da058f9f, type: 3}
-  _pyramidFromSpheresFigure: {fileID: 445046357038671830, guid: b5dc8a37e2538fc42b1dda0a11e39e47, type: 3}
-  parentTransform: {fileID: 1874873200}
 --- !u!1 &1578727667
 GameObject:
   m_ObjectHideFlags: 0

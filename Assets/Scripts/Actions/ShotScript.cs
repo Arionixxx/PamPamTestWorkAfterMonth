@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using _Code_Figures;
 using UnityEngine;
 
 namespace Actions
@@ -33,6 +32,7 @@ namespace Actions
       }
 
       bullet.Rigidbody.AddForce(transform.forward * _shotForce);
+      Figure.FigureDestroyingAction?.Invoke();
     }
   }
 }

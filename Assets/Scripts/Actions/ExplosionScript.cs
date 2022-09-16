@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 namespace Actions
 {
@@ -52,6 +52,14 @@ namespace Actions
       yield return new WaitForSeconds(0.005f);
       Destroy(gameObj.gameObject);
     }
+
+   /* IEnumerator InstantiationCorutine()
+    {
+      yield return new WaitForSeconds(5);
+      Debug.Log("START THE CORUTINE");
+      Figure.FigureDestroyingAction?.Invoke();
+      
+    } */
 
     private void OnTriggerEnter(Collider collider)
     {

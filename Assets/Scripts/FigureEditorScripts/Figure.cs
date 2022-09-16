@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _Code_Figures
 {
@@ -13,12 +14,27 @@ namespace _Code_Figures
     [SerializeField] private FigureSettings settings;
     [SerializeField] float _distance = 8;
     [SerializeField] Transform playerTransform;
+    [SerializeField] float checkingRadius = 1;//change it
     private GameObject tempMaterial;
     private float _figureScale = 5;
+    private bool _isAnotherFigure = false;
+    private float _tempDistance = 5;
+
+    static public UnityAction FigureDestroyingAction;
+
+    private void OnEnable()
+    {
+      FigureDestroyingAction += GenerateFiguresAfterDestroying;
+    }
+    private void OnDisable()
+    {
+      FigureDestroyingAction -= GenerateFiguresAfterDestroying;
+    }
 
     private void Awake()
     {
       tempMaterial = cubePref;
+      _tempDistance = _distance;
       GenerateFigures();
     }
 
@@ -113,6 +129,60 @@ namespace _Code_Figures
       CreatePyramid();
       parentTransform.position = new Vector3(playerTransform.position.x, 0, playerTransform.position.z - _distance);
       CreateCube();
+
+    }
+
+
+    void AnotherFiguresCheck(Vector3 instantiatorPos)
+    {
+      Debug.Log("checking!");
+      Collider[] hitColliders = Physics.OverlapSphere(instantiatorPos, checkingRadius);
+      foreach (var hitCollider in hitColliders)
+      {
+        if (hitCollider.CompareTag("DestroyedFigure") && !hitCollider.gameObject.GetComponent<Rigidbody>().isKinematic){//change it 
+          _isAnotherFigure = true;
+          
+        }
+        else
+        {
+          _isAnotherFigure = false;
+        }
+      }
+    }
+
+    void GenerateFiguresAfterDestroying()
+    {
+      //after shot
+      parentTransform.position = new Vector3(playerTransform.position.x + _distance, 0, playerTransform.position.z);
+      AnotherFiguresCheck(parentTransform.position);
+      if (!_isAnotherFigure)
+      {
+        CubeAsAMaterial();
+        CreateCube();
+      }
+      parentTransform.position = new Vector3(playerTransform.position.x - _distance, 0, playerTransform.position.z);
+      AnotherFiguresCheck(parentTransform.position);
+      if (!_isAnotherFigure)
+      {
+        CubeAsAMaterial();
+        CreatePyramid();
+      }
+      parentTransform.position = new Vector3(playerTransform.position.x, 0, playerTransform.position.z + _distance);
+      AnotherFiguresCheck(parentTransform.position);
+      if (!_isAnotherFigure)
+      {
+        SphereAsAMaterial();
+        CreateCube();
+      }
+      parentTransform.position = new Vector3(playerTransform.position.x, 0, playerTransform.position.z - _distance);
+      AnotherFiguresCheck(parentTransform.position);
+      if (!_isAnotherFigure)
+      {
+        SphereAsAMaterial();
+        CreatePyramid();
+      }
+
+
 
     }
   }
