@@ -1,5 +1,6 @@
 using _Code_Figures;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Actions
@@ -13,6 +14,42 @@ namespace Actions
 
 
     private ExplosionScript bullet; //cube/sphere instantiation script
+  
+    private void Awake()
+    {
+      List<ExplosionScript> poolBullets = new List<ExplosionScript>();
+      for (int i = 0; i  < 10; i++)
+      {
+        ExplosionScript cube = new ExplosionScript();
+        cube = _cube;
+        cube.gameObject.SetActive(false);
+        poolBullets.Add(cube);
+      }
+      for (int i = 0; i < 10; i++)
+      {
+        ExplosionScript sphere = new ExplosionScript();
+        sphere = _sphere;
+        sphere.gameObject.SetActive(false);
+        poolBullets.Add(sphere);
+      }
+      RandomShuffle(poolBullets);
+      foreach (var pool in poolBullets)
+      {
+        Debug.Log (pool);
+      }
+    }
+
+    private void RandomShuffle(List<ExplosionScript> poolBullets)
+    {
+      for (int i = poolBullets.Count - 1; i >= 1; i--)
+      {
+        int j = Random.Range(1, 10); 
+        var temp = poolBullets[j];
+        poolBullets[j] = poolBullets[i];
+        poolBullets[i] = temp;
+      }
+    }
+
 
     public void OnShotButtonDown()
     {
