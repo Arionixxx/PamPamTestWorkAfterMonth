@@ -50,7 +50,7 @@ namespace Actions
     IEnumerator DestroyCoroutine(Collider gameObj)
     {
       yield return new WaitForSeconds(0.005f);
-      Destroy(gameObj.gameObject);
+      gameObj.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider collider)

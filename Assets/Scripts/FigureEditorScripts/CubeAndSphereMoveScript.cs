@@ -15,7 +15,7 @@ namespace _Code_Figures
     IEnumerator bulletDestroyCoroutine()
     {
       yield return new WaitForSeconds(3);
-      Destroy(gameObject);
+      gameObject.SetActive(false);
     }
   }
 }

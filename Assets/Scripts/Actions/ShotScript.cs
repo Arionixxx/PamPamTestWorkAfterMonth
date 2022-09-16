@@ -23,7 +23,6 @@ namespace Actions
       for (int i = 0; i  < 10; i++)
       {
         ExplosionScript cube = new ExplosionScript();
-        //  cube = _cube;
         cube = Instantiate(_cube);
         cube.gameObject.SetActive(false);
         poolBullets.Add(cube);
@@ -31,7 +30,6 @@ namespace Actions
       for (int i = 0; i < 10; i++)
       {
         ExplosionScript sphere = new ExplosionScript();
-       // sphere = _sphere;
         sphere = Instantiate(_sphere);
         sphere.gameObject.SetActive(false);
         poolBullets.Add(sphere);
@@ -63,25 +61,28 @@ namespace Actions
 
       float randNum = Random.Range(1, 3);
 
-   /*   if (randNum == 1)
-      {
-        bullet = Instantiate(_cube, shotVector, Quaternion.identity);
-      }
-      else
+      /*   if (randNum == 1)
+         {
+           bullet = Instantiate(_cube, shotVector, Quaternion.identity);
+         }
+         else
 
+         {
+           bullet = Instantiate(_sphere, shotVector, Quaternion.identity);
+         } */
+      int i = poolBullets.Count;
+      bullet = poolBullets[i-1];
+      poolBullets.RemoveAt(poolBullets.Count-1);//remake it!
+   /*  if (i <= 1)
       {
-        bullet = Instantiate(_sphere, shotVector, Quaternion.identity);
+        i = poolBullets.Count;
       } */
-
-      bullet = poolBullets[poolBullets.Count - 1];
-      poolBullets.RemoveAt(poolBullets.Count-1);
       bullet.gameObject.SetActive(true);
       bullet.transform.position = shotVector;
 
 
       bullet.Rigidbody.AddForce(transform.forward * _shotForce);
       StartCoroutine(InstantiationCorutine());
-      Debug.Log(bullet);
     }
 
     IEnumerator InstantiationCorutine()
