@@ -12,7 +12,7 @@ namespace Actions
     [SerializeField] FigureSettings settings;
     [SerializeField] float _shotForce;
 
-    List<ExplosionScript> poolBullets;
+   public static List<ExplosionScript> poolBullets;
 
 
     private ExplosionScript bullet; //cube/sphere instantiation script
@@ -73,10 +73,10 @@ namespace Actions
       int i = poolBullets.Count;
       bullet = poolBullets[i-1];
       poolBullets.RemoveAt(poolBullets.Count-1);//remake it!
-   /*  if (i <= 1)
+     if (i <= 1)
       {
         i = poolBullets.Count;
-      } */
+      } 
       bullet.gameObject.SetActive(true);
       bullet.transform.position = shotVector;
 
