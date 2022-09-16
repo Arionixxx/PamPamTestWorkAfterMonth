@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Figures
+namespace _Code_Figures
 {
   public class CubeAndSphereMoveScript : MonoBehaviour
   {

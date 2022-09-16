@@ -137,9 +137,7 @@ namespace _Code_Figures
       Collider[] hitColliders = Physics.OverlapSphere(instantiatorPos, checkingRadius);
       foreach (var hitCollider in hitColliders)
       {
-         if (hitCollider.CompareTag("DestroyedFigure") && hitCollider.gameObject.GetComponent<Rigidbody>().isKinematic){//change it 
-       // if (hitCollider.CompareTag("DestroyedFigure")){ 
-       //if (!hitCollider.gameObject.GetComponent<Rigidbody>().isKinematic) { 
+         if (hitCollider.CompareTag("DestroyedFigure") && hitCollider.gameObject.GetComponent<Rigidbody>().isKinematic){
            _isAnotherFigure = true;
           return;
         }
@@ -172,14 +170,14 @@ namespace _Code_Figures
       if (!_isAnotherFigure)
       {
         SphereAsAMaterial();
-        CreateCube();
+        CreatePyramid();
       }
       parentTransform.position = new Vector3(playerTransform.position.x, 0, playerTransform.position.z - _distance);
       AnotherFiguresCheck(parentTransform.position);
       if (!_isAnotherFigure)
       {
         SphereAsAMaterial();
-        CreatePyramid();
+        CreateCube();
       }
 
       _isAnotherFigure = false;
