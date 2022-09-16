@@ -11,12 +11,15 @@ namespace _Code_Figures
     [SerializeField] private GameObject figureInstantiationTransform;
     [SerializeField] private GameObject instantiations;
     [SerializeField] private FigureSettings settings;
+    [SerializeField] float _distance = 8;
+    [SerializeField] Transform playerTransform;
     private GameObject tempMaterial;
-    private float _figureScale;
+    private float _figureScale = 5;
 
     private void Awake()
     {
       tempMaterial = cubePref;
+      GenerateFigures();
     }
 
     public void CubeAsAMaterial()
@@ -96,8 +99,20 @@ namespace _Code_Figures
           }
         }
       }
+    }
 
-
+    public void GenerateFigures()
+    {
+      parentTransform.position = new Vector3(playerTransform.position.x + _distance, 0, playerTransform.position.z);
+      CubeAsAMaterial();
+      CreateCube();
+      parentTransform.position = new Vector3(playerTransform.position.x - _distance, 0, playerTransform.position.z);
+      CreatePyramid();
+      parentTransform.position = new Vector3(playerTransform.position.x, 0, playerTransform.position.z + _distance);
+      SphereAsAMaterial();
+      CreatePyramid();
+      parentTransform.position = new Vector3(playerTransform.position.x, 0, playerTransform.position.z - _distance);
+      CreateCube();
 
     }
   }
