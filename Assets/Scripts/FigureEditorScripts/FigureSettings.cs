@@ -15,4 +15,7 @@ public class FigureSettings : ScriptableObject
     public float bulletSpeed = 30;
     public float bulletDamageForce = 30;
     public float bulletExplosionRadius = 1;
+
+  //instantiation after destroying
+    public float rebuildingTime = 5;
 }

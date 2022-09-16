@@ -38,7 +38,7 @@ namespace Actions
 
     IEnumerator InstantiationCorutine()
     {
-      yield return new WaitForSeconds(5);
+      yield return new WaitForSeconds(settings.rebuildingTime);
       Figure.FigureDestroyingAction?.Invoke();
     }
   }
