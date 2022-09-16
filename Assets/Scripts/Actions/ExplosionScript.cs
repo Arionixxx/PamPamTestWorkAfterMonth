@@ -53,14 +53,6 @@ namespace Actions
       Destroy(gameObj.gameObject);
     }
 
-   /* IEnumerator InstantiationCorutine()
-    {
-      yield return new WaitForSeconds(5);
-      Debug.Log("START THE CORUTINE");
-      Figure.FigureDestroyingAction?.Invoke();
-      
-    } */
-
     private void OnTriggerEnter(Collider collider)
     {
       if (collider.CompareTag("DestroyedFigure"))

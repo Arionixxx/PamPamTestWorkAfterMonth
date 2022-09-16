@@ -50,7 +50,6 @@ namespace _Code_Figures
     }
     public void CreateCube()
     {
-      //add script for parent transform moving if another object are nearby
       CreateFigureCube(tempMaterial, settings.length, settings.width, settings.height);
     }
     public void CreatePyramid()
