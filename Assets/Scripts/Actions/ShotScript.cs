@@ -69,7 +69,6 @@ namespace Actions
       }
       bullet = poolBullets[bulletIndex-1];
       bulletIndex--;
-      Debug.Log(bullet.Rigidbody.isKinematic);
       bullet.Rigidbody.isKinematic = false;
       bullet.transform.position = shotVector;
       bullet.transform.rotation = shotRotation;

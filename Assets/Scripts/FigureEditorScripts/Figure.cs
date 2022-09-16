@@ -14,7 +14,7 @@ namespace _Code_Figures
     [SerializeField] private FigureSettings settings;
     [SerializeField] float _distance = 8;
     [SerializeField] Transform playerTransform;
-    [SerializeField] float checkingRadius = 1;
+    [SerializeField] float checkingRadius = 3;
     private GameObject tempMaterial;
     private float _figureScale = 5;
     private bool _isAnotherFigure = false;
@@ -132,7 +132,6 @@ namespace _Code_Figures
 
     void AnotherFiguresCheck(Vector3 instantiatorPos)
     {
-      Debug.Log("checking!");
       Collider[] hitColliders = Physics.OverlapSphere(instantiatorPos, checkingRadius);
       foreach (var hitCollider in hitColliders)
       {

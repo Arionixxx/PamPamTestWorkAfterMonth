@@ -1394,6 +1394,7 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: 849617ea16b5a374d8f4bcc76e041153, type: 2}
   _distance: 8
   playerTransform: {fileID: 1112198331}
+  checkingRadius: 3
 --- !u!1 &1578727667
 GameObject:
   m_ObjectHideFlags: 0
