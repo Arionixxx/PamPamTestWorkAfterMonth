@@ -12,13 +12,16 @@ namespace Actions
     [SerializeField] FigureSettings settings;
     [SerializeField] float _shotForce;
 
-   public static List<ExplosionScript> poolBullets;
+    Quaternion startRot;
+
+    public static List<ExplosionScript> poolBullets;
 
 
     private ExplosionScript bullet; //cube/sphere instantiation script
   
     private void Awake()
     {
+      startRot = _cube.transform.rotation;
       poolBullets = new List<ExplosionScript>();
       for (int i = 0; i  < 10; i++)
       {
@@ -59,28 +62,17 @@ namespace Actions
 
       Vector3 shotVector = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-      float randNum = Random.Range(1, 3);
-
-      /*   if (randNum == 1)
-         {
-           bullet = Instantiate(_cube, shotVector, Quaternion.identity);
-         }
-         else
-
-         {
-           bullet = Instantiate(_sphere, shotVector, Quaternion.identity);
-         } */
       int i = poolBullets.Count;
       bullet = poolBullets[i-1];
-      poolBullets.RemoveAt(poolBullets.Count-1);//remake it!
+      poolBullets.RemoveAt(poolBullets.Count-1);
      if (i <= 1)
       {
         i = poolBullets.Count;
-      } 
-      bullet.gameObject.SetActive(true);
+      }
+      
       bullet.transform.position = shotVector;
-
-
+      bullet.transform.rotation = startRot;
+      bullet.gameObject.SetActive(true);
       bullet.Rigidbody.AddForce(transform.forward * _shotForce);
       StartCoroutine(InstantiationCorutine());
     }
