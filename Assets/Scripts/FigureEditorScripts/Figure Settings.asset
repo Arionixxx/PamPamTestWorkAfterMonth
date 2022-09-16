@@ -19,3 +19,4 @@ MonoBehaviour:
   bulletSpeed: 1000
   bulletDamageForce: 300
   bulletExplosionRadius: 1
+  rebuildingTime: 5

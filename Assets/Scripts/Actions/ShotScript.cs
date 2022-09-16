@@ -12,15 +12,18 @@ namespace Actions
     [SerializeField] FigureSettings settings;
     [SerializeField] float _shotForce;
 
-    Quaternion startRot;
+    private Vector3 startPos;
+    private Quaternion startRot;
+    private int bulletIndex;
 
     public static List<ExplosionScript> poolBullets;
 
 
-    private ExplosionScript bullet; //cube/sphere instantiation script
+    private ExplosionScript bullet;
   
     private void Awake()
     {
+      startPos = _cube.transform.position;
       startRot = _cube.transform.rotation;
       poolBullets = new List<ExplosionScript>();
       for (int i = 0; i  < 10; i++)
@@ -38,10 +41,7 @@ namespace Actions
         poolBullets.Add(sphere);
       }
       RandomShuffle(poolBullets);
-      foreach (var pool in poolBullets)
-      {
-        Debug.Log (pool);
-      }
+      bulletIndex = poolBullets.Count;
     }
 
     private void RandomShuffle(List<ExplosionScript> poolBullets)
@@ -61,17 +61,17 @@ namespace Actions
       _shotForce = settings.bulletSpeed;
 
       Vector3 shotVector = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+      Quaternion shotRotation = transform.rotation;
 
-      int i = poolBullets.Count;
-      bullet = poolBullets[i-1];
-      poolBullets.RemoveAt(poolBullets.Count-1);
-     if (i <= 1)
+      if (bulletIndex <= 1)
       {
-        i = poolBullets.Count;
+        bulletIndex = poolBullets.Count;
       }
-      
+      bullet = poolBullets[bulletIndex-1];
+      bulletIndex--;
+      bullet.Rigidbody.isKinematic = false;
       bullet.transform.position = shotVector;
-      bullet.transform.rotation = startRot;
+      bullet.transform.rotation = shotRotation;
       bullet.gameObject.SetActive(true);
       bullet.Rigidbody.AddForce(transform.forward * _shotForce);
       StartCoroutine(InstantiationCorutine());

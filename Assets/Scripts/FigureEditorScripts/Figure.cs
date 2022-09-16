@@ -14,7 +14,7 @@ namespace _Code_Figures
     [SerializeField] private FigureSettings settings;
     [SerializeField] float _distance = 8;
     [SerializeField] Transform playerTransform;
-    [SerializeField] float checkingRadius = 1;//change it
+    [SerializeField] float checkingRadius = 1;
     private GameObject tempMaterial;
     private float _figureScale = 5;
     private bool _isAnotherFigure = false;
