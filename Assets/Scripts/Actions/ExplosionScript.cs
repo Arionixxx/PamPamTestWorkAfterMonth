@@ -25,8 +25,9 @@ namespace Actions
     public void Explode()
     {
       Collider[] overlappedCollidersForDestroing = Physics.OverlapSphere(transform.position, _radius);
-      Collider[] overlappedCollidersForImpulse = Physics.OverlapSphere(transform.position, _radius * 4);//change method here
-      foreach (Collider col in overlappedCollidersForImpulse)
+      Collider[] overlappedCollidersForImpulse = Physics.OverlapSphere(transform.position, _radius * 3);//change method here
+      Collider [] overlappedCollidersForArray = Physics.OverlapSphere(transform.position, settings.length);
+      foreach (Collider col in overlappedCollidersForArray)
       {
         if (col.CompareTag("DestroyedFigure")){
           Figure.FiguresAfterExplosion.Add(col.gameObject);

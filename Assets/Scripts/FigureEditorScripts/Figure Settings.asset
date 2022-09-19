@@ -18,5 +18,5 @@ MonoBehaviour:
   pyramidLevelsCount: 7
   bulletSpeed: 1000
   bulletDamageForce: 600
-  bulletExplosionRadius: 1.5
+  bulletExplosionRadius: 1
   rebuildingTime: 5
