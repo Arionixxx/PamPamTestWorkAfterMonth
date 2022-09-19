@@ -90,12 +90,14 @@ namespace _Code_Figures
               FiguresAfterExplosion[y].transform.position = tempPos_;
               FiguresAfterExplosion[y].GetComponent<Rigidbody>().isKinematic = true;
               FiguresAfterExplosion[y].SetActive(true);
+             // FiguresAfterExplosion.RemoveAt(y);
               y++;
             }
             tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);
           }
         }
       }
+      FiguresAfterExplosion.Clear();
     }
 
     public void CreateFigurePyramid(GameObject go, int pyramidLevels)
@@ -126,9 +128,11 @@ namespace _Code_Figures
             }
             else
             {
+              Debug.Log(FiguresAfterExplosion[y]);
               FiguresAfterExplosion[y].transform.position = tempPos_;
               FiguresAfterExplosion[y].GetComponent<Rigidbody>().isKinematic = true;
               FiguresAfterExplosion[y].SetActive(true);
+              //FiguresAfterExplosion.RemoveAt(y);
               y++;
             }
             tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);
@@ -136,6 +140,7 @@ namespace _Code_Figures
           }
         }
       }
+      FiguresAfterExplosion.Clear();
     }
 
     public void GenerateFigures()
@@ -144,11 +149,13 @@ namespace _Code_Figures
       CubeAsAMaterial();
       CreateCube();
       parentTransform.position = new Vector3(playerTransform.position.x - _distance, 0, playerTransform.position.z);
+      CubeAsAMaterial();
       CreatePyramid();
       parentTransform.position = new Vector3(playerTransform.position.x, 0, playerTransform.position.z + _distance);
       SphereAsAMaterial();
       CreatePyramid();
       parentTransform.position = new Vector3(playerTransform.position.x, 0, playerTransform.position.z - _distance);
+      SphereAsAMaterial();
       CreateCube();
       _inGame = true;
     }

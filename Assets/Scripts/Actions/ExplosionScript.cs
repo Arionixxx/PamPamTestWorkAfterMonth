@@ -25,12 +25,11 @@ namespace Actions
     public void Explode()
     {
       Collider[] overlappedCollidersForDestroing = Physics.OverlapSphere(transform.position, _radius);
-      Collider[] overlappedCollidersForImpulse = Physics.OverlapSphere(transform.position, _radius * 3);//change method here
+      Collider[] overlappedCollidersForImpulse = Physics.OverlapSphere(transform.position, _radius * 4);//change method here
       foreach (Collider col in overlappedCollidersForImpulse)
       {
         if (col.CompareTag("DestroyedFigure")){
           Figure.FiguresAfterExplosion.Add(col.gameObject);
-         // col.gameObject.SetActive(false);
         }
       }
 
@@ -59,7 +58,7 @@ namespace Actions
 
     IEnumerator DestroyCoroutine(Collider gameObj)
     {
-      yield return new WaitForSeconds(0.005f);
+      yield return null;
       _rigidbody.isKinematic = true;
       gameObj.gameObject.SetActive(false);
     }
