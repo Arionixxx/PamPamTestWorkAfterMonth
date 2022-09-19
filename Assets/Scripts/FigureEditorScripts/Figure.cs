@@ -88,6 +88,7 @@ namespace _Code_Figures
             else
             {
               FiguresAfterExplosion[y].transform.position = tempPos_;
+              FiguresAfterExplosion[y].GetComponent<Rigidbody>().isKinematic = true;
               FiguresAfterExplosion[y].SetActive(true);
               y++;
             }
@@ -103,6 +104,7 @@ namespace _Code_Figures
       _go.transform.position = new Vector3(parentTransform.position.x, parentTransform.position.y, parentTransform.position.z);
       Vector3 tempPos = _go.transform.position;
       Vector3 tempPos_ = tempPos;
+      int y = 0;
 
       for (int i = pyramidLevels; i > 0; i--)
       {
@@ -124,7 +126,10 @@ namespace _Code_Figures
             }
             else
             {
-              //take elements from pool, move them and make active 
+              FiguresAfterExplosion[y].transform.position = tempPos_;
+              FiguresAfterExplosion[y].GetComponent<Rigidbody>().isKinematic = true;
+              FiguresAfterExplosion[y].SetActive(true);
+              y++;
             }
             tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);
             
