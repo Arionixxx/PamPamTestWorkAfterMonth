@@ -74,13 +74,6 @@ namespace Actions
       bullet.transform.rotation = shotRotation;
       bullet.gameObject.SetActive(true);
       bullet.Rigidbody.AddForce(transform.forward * _shotForce);
-      StartCoroutine(InstantiationCorutine());
-    }
-
-    IEnumerator InstantiationCorutine()
-    {
-      yield return new WaitForSeconds(settings.rebuildingTime);
-      Figure.FigureDestroyingAction?.Invoke();
     }
   }
 }

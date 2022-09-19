@@ -45,6 +45,7 @@ namespace Actions
           rigidbody.AddExplosionForce(_force, transform.position, _radius * 3);
         }
       }
+      AfterDestroyingInstantiation.AfterDestroyingInst?.Invoke();
     }
 
 
@@ -57,7 +58,7 @@ namespace Actions
 
     private void OnTriggerEnter(Collider collider)
     {
-      if (collider.CompareTag("DestroyedFigure"))
+      if (collider.CompareTag("DestroyedFigure") && collider.gameObject.GetComponent<Rigidbody>().isKinematic)//delete "isKinematic" for separate figures explosion
       {
         Explode();
       }
