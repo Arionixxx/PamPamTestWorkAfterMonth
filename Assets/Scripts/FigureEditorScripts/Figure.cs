@@ -24,6 +24,8 @@ namespace _Code_Figures
     static public UnityAction FigureDestroyingAction;
     static public List<GameObject> FiguresAfterExplosion;
 
+    private Quaternion _cubeRotation = default;
+
     private void OnEnable()
     {
       FigureDestroyingAction += GenerateFiguresAfterDestroying;
@@ -83,14 +85,14 @@ namespace _Code_Figures
           {
             if (!_inGame)
             {
-              Instantiate(go, tempPos_, Quaternion.identity, _go.transform);//here change object from pool position
+              Instantiate(go, tempPos_, Quaternion.identity, _go.transform);
             }
             else
             {
               FiguresAfterExplosion[y].transform.position = tempPos_;
               FiguresAfterExplosion[y].GetComponent<Rigidbody>().isKinematic = true;
+              FiguresAfterExplosion[y].transform.rotation = _cubeRotation;
               FiguresAfterExplosion[y].SetActive(true);
-             // FiguresAfterExplosion.RemoveAt(y);
               y++;
             }
             tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);
@@ -124,15 +126,15 @@ namespace _Code_Figures
           {
             if (!_inGame)
             {
-              Instantiate(go, tempPos_, Quaternion.identity, _go.transform);//here change object from pool position
+              Instantiate(go, tempPos_, Quaternion.identity, _go.transform);
             }
             else
             {
               Debug.Log(FiguresAfterExplosion[y]);
               FiguresAfterExplosion[y].transform.position = tempPos_;
               FiguresAfterExplosion[y].GetComponent<Rigidbody>().isKinematic = true;
+              FiguresAfterExplosion[y].transform.rotation = _cubeRotation;
               FiguresAfterExplosion[y].SetActive(true);
-              //FiguresAfterExplosion.RemoveAt(y);
               y++;
             }
             tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);

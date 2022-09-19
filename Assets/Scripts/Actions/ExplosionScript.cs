@@ -9,11 +9,13 @@ namespace Actions
   {
     [SerializeField] private FigureSettings settings;
     [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private Quaternion _rotation;
 
     public Rigidbody Rigidbody => _rigidbody;
 
     public float _radius;
     public float _force;
+
 
     private void Start()
     {
