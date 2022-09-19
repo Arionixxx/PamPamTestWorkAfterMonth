@@ -36,7 +36,7 @@ public class AfterDestroyingInstantiation : MonoBehaviour
 
   IEnumerator MakeExplodedObjectsInactiveCorutine()
   {
-    yield return new WaitForSeconds(3);//change it, will be taken from settings
+    yield return new WaitForSeconds(settings.rebuildingTime/2);
     foreach (GameObject go in Figure.FiguresAfterExplosion)
     {
       if (go.activeInHierarchy)
