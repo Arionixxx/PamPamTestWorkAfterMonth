@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,6 +22,7 @@ namespace _Code_Figures
     private bool _inGame = false;
 
     static public UnityAction FigureDestroyingAction;
+    static public List<GameObject> FiguresAfterExplosion;
 
     private void OnEnable()
     {
@@ -33,6 +35,7 @@ namespace _Code_Figures
 
     private void Awake()
     {
+      FiguresAfterExplosion = new List<GameObject>();
       tempMaterial = cubePref;
       GenerateFigures();
     }
@@ -58,24 +61,13 @@ namespace _Code_Figures
       CreateFigurePyramid(tempMaterial, settings.pyramidLevelsCount);
     }
 
-    /// ///////////////////////////////////////////////
-    public void CreateCubeFromPool()
-    {
-
-    }
-
-    public void CreatePyramidFromPool()
-    {
-
-    }
-
     public void CreateFigureCube(GameObject go, int length, int width, int height)
     {
       GameObject _go = Instantiate(figureInstantiationTransform, instantiations.transform) as GameObject;
       _go.transform.position = new Vector3(parentTransform.position.x, parentTransform.position.y, parentTransform.position.z);
       Vector3 tempPos = _go.transform.position;
       Vector3 tempPos_ = tempPos;
-
+      int y = 0;
       for (int i = 0; i < height; i++)
       {
         tempPos_ = tempPos;
@@ -95,7 +87,9 @@ namespace _Code_Figures
             }
             else
             {
-              //take elements from pool, move them and make active 
+              FiguresAfterExplosion[y].transform.position = tempPos_;
+              FiguresAfterExplosion[y].SetActive(true);
+              y++;
             }
             tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);
           }

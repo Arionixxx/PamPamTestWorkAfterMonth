@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using _Code_Figures;
 
 
 namespace Actions
@@ -24,7 +25,14 @@ namespace Actions
     public void Explode()
     {
       Collider[] overlappedCollidersForDestroing = Physics.OverlapSphere(transform.position, _radius);
-      Collider[] overlappedCollidersForImpulse = Physics.OverlapSphere(transform.position, _radius * 3);
+      Collider[] overlappedCollidersForImpulse = Physics.OverlapSphere(transform.position, _radius * 3);//change method here
+      foreach (Collider col in overlappedCollidersForImpulse)
+      {
+        if (col.CompareTag("DestroyedFigure")){
+          Figure.FiguresAfterExplosion.Add(col.gameObject);
+         // col.gameObject.SetActive(false);
+        }
+      }
 
       for (int i = 0; i < overlappedCollidersForDestroing.Length; i++)
       {

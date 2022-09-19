@@ -12,10 +12,12 @@ public class AfterDestroyingInstantiation : MonoBehaviour
   private void OnEnable()
   {
     AfterDestroyingInst += AfterDestrouingInstF;
+    AfterDestroyingInst += MakeExplodedObjectsInactive;
   }
   private void OnDisable()
   {
     AfterDestroyingInst -= AfterDestrouingInstF;
+    AfterDestroyingInst -= MakeExplodedObjectsInactive;
   }
   public void AfterDestrouingInstF()
   {
@@ -25,5 +27,22 @@ public class AfterDestroyingInstantiation : MonoBehaviour
   {
     yield return new WaitForSeconds(settings.rebuildingTime);
     Figure.FigureDestroyingAction?.Invoke();
+  }
+
+  public void MakeExplodedObjectsInactive()
+  {
+    StartCoroutine(MakeExplodedObjectsInactiveCorutine());
+  }
+
+  IEnumerator MakeExplodedObjectsInactiveCorutine()
+  {
+    yield return new WaitForSeconds(3);//change it, will be taken from settings
+    foreach (GameObject go in Figure.FiguresAfterExplosion)
+    {
+      if (go.activeInHierarchy)
+      {
+        go.SetActive(false);
+      }
+    }
   }
 }
