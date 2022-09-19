@@ -148,7 +148,6 @@ namespace _Code_Figures
 
     void GenerateFiguresAfterDestroying()
     {
-      //after shot
       parentTransform.position = new Vector3(playerTransform.position.x + _distance, 0, playerTransform.position.z);
       AnotherFiguresCheck(parentTransform.position);
       if (!_isAnotherFigure)
