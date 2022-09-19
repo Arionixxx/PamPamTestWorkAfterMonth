@@ -18,6 +18,7 @@ namespace _Code_Figures
     private GameObject tempMaterial;
     private float _figureScale = 5;
     private bool _isAnotherFigure = false;
+    private bool _inGame = false;
 
     static public UnityAction FigureDestroyingAction;
 
@@ -57,6 +58,16 @@ namespace _Code_Figures
       CreateFigurePyramid(tempMaterial, settings.pyramidLevelsCount);
     }
 
+    /// ///////////////////////////////////////////////
+    public void CreateCubeFromPool()
+    {
+
+    }
+
+    public void CreatePyramidFromPool()
+    {
+
+    }
 
     public void CreateFigureCube(GameObject go, int length, int width, int height)
     {
@@ -78,7 +89,14 @@ namespace _Code_Figures
 
           for (int k = 0; k < width; k++)
           {
-            Instantiate(go, tempPos_, Quaternion.identity, _go.transform);
+            if (!_inGame)
+            {
+              Instantiate(go, tempPos_, Quaternion.identity, _go.transform);//here change object from pool position
+            }
+            else
+            {
+              //take elements from pool, move them and make active 
+            }
             tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);
           }
         }
@@ -106,7 +124,14 @@ namespace _Code_Figures
 
           for (int k = i; k > 0; k--)
           {
-            Instantiate(go, tempPos_, Quaternion.identity, _go.transform);
+            if (!_inGame)
+            {
+              Instantiate(go, tempPos_, Quaternion.identity, _go.transform);//here change object from pool position
+            }
+            else
+            {
+              //take elements from pool, move them and make active 
+            }
             tempPos_ = new Vector3(tempPos_.x + _figureScale, tempPos_.y, tempPos_.z);
             
           }
@@ -126,7 +151,7 @@ namespace _Code_Figures
       CreatePyramid();
       parentTransform.position = new Vector3(playerTransform.position.x, 0, playerTransform.position.z - _distance);
       CreateCube();
-
+      _inGame = true;
     }
 
 
